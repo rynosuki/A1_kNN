@@ -8,7 +8,7 @@ class knn_prediction:
     return np.linalg.norm(values - np.array(point), axis = 1)
   
   def nearest_neighbors(self, distance_val, k):
-    return np.argpartition(distance_val, k-1)
+    return np.argpartition(distance_val, k)
     
   def predict(self, pred, k):
     values = []

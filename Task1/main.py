@@ -65,19 +65,19 @@ def plotAll(decision_boundary, array):
 
     ax1.imshow(decision_boundary[0], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax1.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax1.set_title("k = 1, error rate = 0")
+    ax1.set_title("k = 1, error rate = 45")
     
     ax2.imshow(decision_boundary[1], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax2.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax2.set_title("k = 3, error rate = 16")
+    ax2.set_title("k = 3, error rate = 33")
     
     ax3.imshow(decision_boundary[2], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax3.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax3.set_title("k = 5, error rate = 17")
+    ax3.set_title("k = 5, error rate = 31")
     
     ax4.imshow(decision_boundary[3], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax4.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax4.set_title("k = 7, error rate = 19")
+    ax4.set_title("k = 7, error rate = 31")
     mplot.show()
 
 if __name__ == "__main__":
