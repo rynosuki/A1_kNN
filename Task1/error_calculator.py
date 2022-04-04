@@ -13,7 +13,6 @@ class error_calculator:
       index = 0
       for i in self.values:
         distances = self.eucledian(self.values[:,:2], i[:2])
-        distances = np.delete(distances, index)
         nearest_neighbor = self.nearest_neighbors(distances, k)
         result = 0
         for j in range(k):

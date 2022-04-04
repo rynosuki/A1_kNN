@@ -1,9 +1,10 @@
+
 import numpy as np
 
 class knn_prediction:
   def __init__(self, values):
     self.values = values
-   
+  
   def eucledian(self, values, point):
     return np.linalg.norm(values - np.array(point), axis = 1)
   
