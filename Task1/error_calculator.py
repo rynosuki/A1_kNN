@@ -1,3 +1,4 @@
+from operator import indexOf
 import numpy as np
 
 class error_calculator:
@@ -16,6 +17,8 @@ class error_calculator:
         nearest_neighbor = self.nearest_neighbors(distances, k)
         result = 0
         for j in range(k):
+          if distances[nearest_neighbor[j]] == 0:
+            nearest_neighbor = np.delete(nearest_neighbor, j)
           result += self.values[:,2][nearest_neighbor[j]]
         if result / k >= 0.5 and i[2] != 1 or result / k < 0.5 and i[2] != 0:
           self.errors[k] += 1

@@ -27,13 +27,16 @@ def main():
     errors = errorcalc.get_errors()
     print("\n Errors are:")
     for err in errors:
-        print(err, "=", (errors[err]))
-    
+        print(err, "=", (errors[err] / len(array)))
+    # mplot.plot(kvals, errors.values())
+    # mplot.show()
+
     decision_boundary = []
     for k in kvals:
         decision_boundary_k = createDecisionBoundary(array, k, predictor)
         decision_boundary.append(decision_boundary_k)
     plotAll(decision_boundary, array)
+    
 
 def printResults(kvals, testchips, result):
     for i in range(len(kvals)):
@@ -44,7 +47,7 @@ def printResults(kvals, testchips, result):
             else:
                 print("chip" + str((k+1)) + " " + str(testchips[k]) + " ==> FAIL")
    
-def createDecisionBoundary(array, k, predictor, gridsize = 100):
+def createDecisionBoundary(array, k, predictor, gridsize = 1000):
     min_x, max_x = min(array[:,0]), max(array[:,0])
     min_y, max_y = min(array[:,1]), max(array[:,1])
     x_axis = np.linspace(min_x, max_x, gridsize)
@@ -59,19 +62,19 @@ def plotAll(decision_boundary, array):
 
     ax1.imshow(decision_boundary[0], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax1.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax1.set_title("k = 1, error rate = 0.136")
+    ax1.set_title("k = 1, error rate = 0.3813")
     
     ax2.imshow(decision_boundary[1], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax2.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax2.set_title("k = 3, error rate = 0.144")
+    ax2.set_title("k = 3, error rate = 0.2796")
     
     ax3.imshow(decision_boundary[2], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax3.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax3.set_title("k = 5, error rate = 0.161")
+    ax3.set_title("k = 5, error rate = 0.2627")
     
     ax4.imshow(decision_boundary[3], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax4.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax4.set_title("k = 7, error rate = 0.263")
+    ax4.set_title("k = 7, error rate = 0.2627")
     mplot.show()
 
 if __name__ == "__main__":
