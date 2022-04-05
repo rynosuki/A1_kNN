@@ -7,7 +7,7 @@ class knn_prediction:
     self.values = values
   
   def eucledian(self, point):
-    return np.linalg.norm(self.values[:,:2] - np.array(point), axis = 1)
+    return np.linalg.norm(np.array(point) - self.values[:,:2], axis = 1)
   
   def nearest_neighbors(self, distance_val, k):
     return np.argpartition(distance_val, k)

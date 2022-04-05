@@ -14,6 +14,7 @@ def main():
     mplot.scatter(array[:,0], array[:,1], c = array[:,2])
     mplot.show()
 
+    t = time()
     kvals = [1,3,5,7]
     result = []
     for p in testchips:
@@ -35,6 +36,7 @@ def main():
     for k in kvals:
         decision_boundary_k = createDecisionBoundary(array, k, predictor)
         decision_boundary.append(decision_boundary_k)
+    print(time()-t)
     plotAll(decision_boundary, array)
     
 
@@ -62,19 +64,19 @@ def plotAll(decision_boundary, array):
 
     ax1.imshow(decision_boundary[0], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax1.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax1.set_title("k = 1, error rate = 0.3813")
+    ax1.set_title("k = 1, error rate = 0.0")
     
     ax2.imshow(decision_boundary[1], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax2.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax2.set_title("k = 3, error rate = 0.2796")
+    ax2.set_title("k = 3, error rate = 0.1355")
     
     ax3.imshow(decision_boundary[2], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax3.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax3.set_title("k = 5, error rate = 0.2627")
+    ax3.set_title("k = 5, error rate = 0.1440")
     
     ax4.imshow(decision_boundary[3], origin='lower', extent=(min(array[:,0]), max(array[:,0]), min(array[:,1]), max(array[:,1])))
     ax4.scatter(array[:,0], array[:,1], c=array[:,2], edgecolors='r')
-    ax4.set_title("k = 7, error rate = 0.2627")
+    ax4.set_title("k = 7, error rate = 0.1610")
     mplot.show()
 
 if __name__ == "__main__":

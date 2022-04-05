@@ -6,10 +6,7 @@ class knn_prediction:
     return np.square(np.subtract(values,point)).mean()
    
   def eucledian(self, values, point):
-    return np.linalg.norm(values - np.array(point))
-  
-  def manhattan(self, values, point):
-    return np.sum(np.abs(values - np.array(point)), axis=1)
+    return np.linalg.norm(np.array(point) - values)
   
   def nearest_neighbors(self, distance_val, k):
     return np.argpartition(distance_val, k)
