@@ -1,12 +1,11 @@
-from time import time
 import numpy as np
 import matplotlib.pyplot as mplot
 
-from error_calculator import error_calculator
-from knn_prediction import knn_prediction
+from T1_error_calculation import error_calculator
+from T1_knn_prediction import knn_prediction
 
 def main():
-    array = np.loadtxt("./Task1/microchips.csv", dtype=np.float64, delimiter=",")
+    array = np.loadtxt("./microchips.csv", dtype=np.float64, delimiter=",")
     predictor = knn_prediction(array)
 
     testchips = [[-0.3, 1.0],[-0.5,-0.1],[0.6,0.0]]
@@ -14,7 +13,6 @@ def main():
     mplot.scatter(array[:,0], array[:,1], c = array[:,2])
     mplot.show()
 
-    t = time()
     kvals = [1,3,5,7]
     result = []
     for p in testchips:
@@ -26,7 +24,7 @@ def main():
     errorcalc = error_calculator(array, kvals)
     errorcalc.calculate_errors()
     errors = errorcalc.get_errors()
-    print("\n Errors are:")
+    print("\n Error rates for k are:")
     for err in errors:
         print(err, "=", (errors[err] / len(array)))
     # mplot.plot(kvals, errors.values())
@@ -36,9 +34,7 @@ def main():
     for k in kvals:
         decision_boundary_k = createDecisionBoundary(array, k, predictor)
         decision_boundary.append(decision_boundary_k)
-    print(time()-t)
     plotAll(decision_boundary, array)
-    
 
 def printResults(kvals, testchips, result):
     for i in range(len(kvals)):
@@ -49,7 +45,7 @@ def printResults(kvals, testchips, result):
             else:
                 print("chip" + str((k+1)) + " " + str(testchips[k]) + " ==> FAIL")
    
-def createDecisionBoundary(array, k, predictor, gridsize = 1000):
+def createDecisionBoundary(array, k, predictor, gridsize = 100):
     min_x, max_x = min(array[:,0]), max(array[:,0])
     min_y, max_y = min(array[:,1]), max(array[:,1])
     x_axis = np.linspace(min_x, max_x, gridsize)

@@ -1,4 +1,3 @@
-from operator import indexOf
 import numpy as np
 
 class knn_prediction:
@@ -19,5 +18,5 @@ class knn_prediction:
       nearest_neighbours = self.nearest_neighbors(distances, k)
       for n in range(k):
         y_values[p] += values[nearest_neighbours[n]][1]
-    y_values = np.array(y_values) / k
+    y_values = np.array(y_values)/k
     return y_values

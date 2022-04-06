@@ -1,4 +1,3 @@
-from operator import indexOf
 import numpy as np
 
 class error_calculator:
